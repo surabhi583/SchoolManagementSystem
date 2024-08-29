@@ -1,0 +1,45 @@
+<span *ngIf="errorMessage" class="text-danger" (click)="clearMessage()">{{errorMessage}}</span>
+
+<div *ngIf="state=='list'" style="margin-left: 10em;">
+
+  <button (click)="createNew()" class="btn btn-outline-success">Create</button>&nbsp;&nbsp;
+  <button class="btn btn-success" (click)="onBtnExport()">Export to CSV</button>
+  <br>
+  <br/>
+<ag-grid-angular 
+  style="width: 70%; height: 100%;"
+  [gridOptions]="roleGridOptions"
+  [rowData]="roles"
+  [class]="themeClass"
+  (rowClicked)="onRowClicked($event)"
+  (gridReady)="onGridReady($event)"
+/> 
+</div>
+
+<div *ngIf="state=='entry'">
+  <mat-card>
+    <mat-card-title style="margin-left: 10px;">Create / Edit Role</mat-card-title>
+    <br>
+    <mat-card-content>
+      <form (submit)="submitData($event)">
+        <mat-form-field>
+          <input type="text" matInput name="id" readonly [(ngModel)]="model.id" />
+        </mat-form-field> &nbsp;&nbsp;
+        <div>
+          <mat-form-field>
+            <input type="text" matInput name="name" placeholder="Role" [(ngModel)]="model.name" required minlength="3"
+              #inputRole="ngModel" />
+          </mat-form-field>
+          <ul *ngIf="inputRole.invalid && inputRole.touched" class="text-danger">
+            <li *ngIf="inputRole.errors?.['required']">Role is required</li>
+            <li *ngIf="inputRole.errors?.['minlength']">Minimum length is 3</li>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button type="submit" mat-button class="btn btn-success">Submit</button>&nbsp;&nbsp;
+          <button (click)="cancel()" class="btn btn-outline-success">Cancel</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

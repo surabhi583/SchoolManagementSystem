@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 style="text-align: center;">Department List</h2>
+  <a class="btn btn-success" routerLink="/departments/create">Create Department</a>
+  &nbsp;&nbsp; <button class="btn btn-success" (click)="onBtnExport()">Export to CSV</button>
+<br/>
+<br/>
+  <ag-grid-angular 
+  style="width: 70%; height: 100%;"
+  [rowData]="departments"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [suppressRowClickSelection]="true"
+  [pagination]="true"
+  [paginationPageSize]="paginationPageSize"
+  [paginationPageSizeSelector]="paginationPageSizeSelector"
+  [class]="themeClass"
+  (rowClicked)="onRowClicked($event)"
+  (gridReady)="onGridReady($event)"
+/> 
+</div>
+<div class="confirmation-popup" *ngIf="confirmationDialogVisible">
+  <div class="confirmation-dialog">
+    <app-confirmation-dialog [title]="'Confirmation'"
+                             [message]="'Are you sure you want to delete this Department?'"></app-confirmation-dialog>
+    <button class="btn btn-danger" (click)="deleteDepartment()">Confirm Delete</button>
+    <button class="btn btn-secondary" (click)="closeConfirmationDialog()">Cancel</button>
+  </div>
+</div>

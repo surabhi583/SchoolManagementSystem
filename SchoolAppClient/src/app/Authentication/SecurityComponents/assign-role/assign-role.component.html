@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title style="margin-left: 10px;">Assign Role</mat-card-title>
+    <br>
+    <mat-card-content>
+      <form (submit)="submit($event)">
+          <mat-form-field>
+            <input type="text" matInput class="form-control" name="id" [(ngModel)]="model.id" readonly />
+          </mat-form-field> &nbsp;&nbsp;
+          <mat-form-field>
+          <input type="text" matInput class="form-control" name="userName" [(ngModel)]="model.userName" readonly />
+          </mat-form-field>&nbsp;&nbsp;
+          <mat-form-field>
+            <mat-select placeholder="Select Roles" name="role" [(ngModel)]="model.role" multiple>
+              <mat-option *ngFor="let role of roles" [value]="role.name">{{role.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+        <button type="submit" mat-button class="btn btn-outline-success">Submit</button>
+        <button class="btn btn-outline-success" mat-button routerLink="/userlist">Back to Users</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

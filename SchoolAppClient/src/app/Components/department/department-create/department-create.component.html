@@ -1,0 +1,19 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title style="margin-left: 10px;">Create Department</mat-card-title>
+    <br>
+    <mat-card-content>
+
+  <form (submit)="createFeeType()">
+    <p>
+      <mat-form-field>
+        <mat-icon matPrefix>group_add</mat-icon>
+        <input type="text" matInput id="departmentName" name="departmentName" placeholder="Department Name" [(ngModel)]="model.departmentName" required />
+      </mat-form-field>
+    </p>
+    <button type="submit" mat-button class="btn btn-outline-success">Submit</button>
+    <button class="btn btn-outline-success" mat-button routerLink="/departments">Back to List</button>
+  </form>
+</mat-card-content>
+</mat-card>
+</div>

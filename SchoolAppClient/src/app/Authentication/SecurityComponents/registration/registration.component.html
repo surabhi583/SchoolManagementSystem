@@ -1,0 +1,47 @@
+<div class="register-container">
+	<div class="register-content">
+		<mat-toolbar class="register-toolbar" color="primary">REGISTER</mat-toolbar>
+		<mat-card>
+
+			<form [formGroup]="registerForm" #formDirective="ngForm" 
+  (ngSubmit)="onSubmit(registerForm, formDirective)">
+				<mat-form-field>
+					<mat-icon matPrefix>email</mat-icon>
+					<input autofocus type="email" matInput placeholder="Email *" formControlName="email">
+					<mat-error *ngIf="checkValidation('email')">
+						{{ emailErrors() }}
+          
+					</mat-error>
+				</mat-form-field>
+
+				<mat-form-field>
+					<mat-icon matPrefix>person_outline</mat-icon>
+					<input autofocus type="text" matInput placeholder="Username *" formControlName="username">
+					<mat-error *ngIf="checkValidation('username')">
+						{{ fieldRequired }}
+					</mat-error>
+				</mat-form-field>
+
+
+				<mat-form-field>
+					<mat-icon matPrefix>lock_outline</mat-icon>
+					<input type="password" autocomplete="false" matInput placeholder="Password *" formControlName="password">
+          <mat-hint>Choose a password of at least eight characters, one uppercase letter and one number</mat-hint>
+      <mat-error *ngIf="checkValidation('password')">
+        {{ getErrorPassword() }}
+      </mat-error>
+				</mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Select Roles" formControlName="roles" multiple>
+            <mat-option *ngFor="let role of rolesList" [value]="role">{{role}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+				
+			<div class="register-btns">
+        	<button [disabled]="registerForm.invalid" style="margin-right: 5px;"  type="submit" mat-button class="btn btn-outline-success">Submit</button>
+          <button class="btn btn-outline-success" routerLink="/login">Already registered?</button>
+      </div>
+			</form>
+		</mat-card>
+	</div>
+</div>

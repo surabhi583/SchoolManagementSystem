@@ -1,0 +1,241 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title style="margin-left: 10px;">Add New Student</mat-card-title>
+    <br>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" class="student-form" #studentForm="ngForm">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <!-- Student Name -->
+              <mat-form-field>
+                <mat-icon matPrefix>person</mat-icon>
+                <mat-label>Student Name</mat-label>
+                <input type="text" matInput id="studentName" name="studentName" placeholder="Student Name"
+                  [(ngModel)]="students.studentName" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Admission Number -->
+              <mat-form-field>
+                <mat-label>Admission Number</mat-label>
+                <input type="text" matInput id="admissionNo" name="admissionNo" placeholder="Admission Number"
+                  [(ngModel)]="students.admissionNo" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Enrollment Number -->
+              <mat-form-field>
+                <mat-label>Enrollment Number</mat-label>
+                <input type="text" matInput id="enrollmentNo" name="enrollmentNo" placeholder="Enrollment Number"
+                  [(ngModel)]="students.enrollmentNo" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Unique Student Attendance Number -->
+              <mat-form-field>
+                <mat-label>Unique Student Attendance Number</mat-label>
+                <input type="text" matInput id="uniqueStudentAttendanceNumber" name="uniqueStudentAttendanceNumber"
+                  placeholder="Unique Student Attendance Number" [(ngModel)]="students.uniqueStudentAttendanceNumber" />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!-- Date of Birth -->
+              <mat-form-field>
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" id="studentDOB" name="studentDOB"
+                  [(ngModel)]="students.studentDOB" required />
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Gender -->
+              <mat-form-field>
+                <mat-label>Gender</mat-label>
+                <mat-select placeholder="Select Gender" id="studentGender" name="studentGender"
+                  [(ngModel)]="students.studentGender" required>
+                  <mat-option value="" disabled>Select Gender</mat-option>
+                  <mat-option *ngFor="let gender of genderList" [value]="gender">{{gender}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Standard class -->
+              <mat-form-field>
+                <mat-label>Standard</mat-label>
+                <mat-select placeholder="Select Standard" id="standardId" name="standardId"
+                  [(ngModel)]="students.standardId" required>
+                  <mat-option value="" disabled>Select Standard</mat-option>
+                  <mat-option *ngFor="let standard of standards"
+                    [value]="standard.standardId">{{standard.standardName}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Student Religion -->
+              <mat-form-field>
+                <mat-label>Religion</mat-label>
+                <input type="text" matInput id="studentReligion" name="studentReligion" placeholder="Religion"
+                  [(ngModel)]="students.studentReligion" />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!-- Student Blood Group -->
+              <mat-form-field>
+                <mat-label>Student Blood Group</mat-label>
+                <input type="text" matInput id="studentBloodGroup" name="studentBloodGroup"
+                  placeholder="Student Blood Group" [(ngModel)]="students.studentBloodGroup" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Student Nationality -->
+              <mat-form-field>
+                <mat-label>Student Nationality</mat-label>
+                <input type="text" matInput id="studentNationality" name="studentNationality"
+                  placeholder="Student Nationality" [(ngModel)]="students.studentNationality" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Student NID Number -->
+              <mat-form-field>
+                <mat-label>Student NID Number</mat-label>
+                <input type="text" matInput id="studentNIDNumber" name="studentNIDNumber"
+                  placeholder="Student NID Number" [(ngModel)]="students.studentNIDNumber" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Student Contact Number 1 -->
+              <mat-form-field>
+                <mat-label>Student Contact Number 1</mat-label>
+                <input type="tel" matInput id="studentContactNumber1" name="studentContactNumber1"
+                  placeholder="Student Contact Number 1" [(ngModel)]="students.studentContactNumber1" />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!-- Student Contact Number 2 -->
+              <mat-form-field>
+                <mat-label>Student Contact Number 2</mat-label>
+                <input type="tel" matInput id="studentContactNumber2" name="studentContactNumber2"
+                  placeholder="Student Contact Number 2" [(ngModel)]="students.studentContactNumber2" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Student Email -->
+              <mat-form-field>
+                <mat-icon matPrefix>email</mat-icon>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput id="studentEmail" name="studentEmail" placeholder="Email"
+                  [(ngModel)]="students.studentEmail" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Permanent Address -->
+              <mat-form-field>
+                <mat-label>Permanent Address</mat-label>
+                <textarea matInput id="permanentAddress" name="permanentAddress" placeholder="Permanent Address"
+                  [(ngModel)]="students.permanentAddress"></textarea>
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Temporary Address -->
+              <mat-form-field>
+                <mat-label>Temporary Address</mat-label>
+                <textarea matInput id="temporaryAddress" name="temporaryAddress" placeholder="Temporary Address"
+                  [(ngModel)]="students.temporaryAddress"></textarea>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!-- Father Name -->
+              <mat-form-field>
+                <mat-label>Father's Name</mat-label>
+                <input type="text" matInput id="fatherName" name="fatherName" placeholder="Father's Name"
+                  [(ngModel)]="students.fatherName" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Father NID -->
+              <mat-form-field>
+                <mat-label>Father's NID</mat-label>
+                <input type="text" matInput id="fatherNID" name="fatherNID" placeholder="Father's NID"
+                  [(ngModel)]="students.fatherNID" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Father Contact Number -->
+              <mat-form-field>
+                <mat-label>Father's Contact Number</mat-label>
+                <input type="tel" matInput id="fatherContactNumber" name="fatherContactNumber"
+                  placeholder="Father's Contact Number" [(ngModel)]="students.fatherContactNumber" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Mother Name -->
+              <mat-form-field>
+                <mat-label>Mother's Name</mat-label>
+                <input type="text" matInput id="motherName" name="motherName" placeholder="Mother's Name"
+                  [(ngModel)]="students.motherName" />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <!-- Mother NID -->
+              <mat-form-field>
+                <mat-label>Mother's NID</mat-label>
+                <input type="text" matInput id="motherNID" name="motherNID" placeholder="Mother's NID"
+                  [(ngModel)]="students.motherNID" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Mother Contact Number -->
+              <mat-form-field>
+                <mat-label>Mother's Contact Number</mat-label>
+                <input type="tel" matInput id="motherContactNumber" name="motherContactNumber"
+                  placeholder="Mother's Contact Number" [(ngModel)]="students.motherContactNumber" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Local Guardian Name -->
+              <mat-form-field>
+                <mat-label>Local Guardian's Name</mat-label>
+                <input type="text" matInput id="localGuardianName" name="localGuardianName"
+                  placeholder="Local Guardian's Name" [(ngModel)]="students.localGuardianName" />
+              </mat-form-field>
+            </td>
+            <td>
+              <!-- Local Guardian Contact Number -->
+              <mat-form-field>
+                <mat-label>Local Guardian's Contact Number</mat-label>
+                <input type="tel" matInput id="localGuardianContactNumber" name="localGuardianContactNumber"
+                  placeholder="Local Guardian's Contact Number" [(ngModel)]="students.localGuardianContactNumber" />
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Image Upload -->
+        <div>
+          <input type="file" #imageInput (change)="uploadImage(imageInput)" accept="image/*" [multiple]="false"
+            class="form-control" />
+          <figure>
+            <img [src]="students.imageUpload.imageData" width="300" />
+            <figcaption>{{students.imageUpload.imageName}}</figcaption>
+          </figure>
+        </div>
+
+        <!-- Button to submit form -->
+        <button type="submit" class="btn btn-outline-success">Submit</button>&nbsp;&nbsp;
+        <button class="btn btn-outline-success" routerLink="/students">Back to List</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

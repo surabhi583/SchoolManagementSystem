@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 style="text-align: center;">Users List</h2>
+  <br/>
+  <button class="btn btn-success" (click)="onBtnExport()">Export to CSV</button>
+<br/>
+<br/>
+<ag-grid-angular 
+  style="width: 70%; height: 100%;"
+  [gridOptions]="userGridOptions"
+  [rowData]="UserList"
+  [class]="themeClass"
+  (rowClicked)="onRowClicked($event)"
+  (gridReady)="onGridReady($event)"
+/> 
+
+</div>

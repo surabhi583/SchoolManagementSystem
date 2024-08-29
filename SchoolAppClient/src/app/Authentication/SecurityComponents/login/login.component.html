@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <br>
+  <mat-card-content>
+    <form (submit)="login($event)">
+      <p>
+        <mat-form-field>
+          <mat-icon matPrefix>email</mat-icon>
+          <input type="email" matInput name="email" placeholder="Email" [(ngModel)]="model.email" />
+        </mat-form-field>
+      </p>
+<div>
+      <p>
+        <mat-form-field>
+          <mat-icon matPrefix>lock_outline</mat-icon>
+          <input type="password" matInput name="model.password" placeholder="Password" [(ngModel)]="model.password"
+            required minlength="4" #inputPass="ngModel" />
+        </mat-form-field>
+      </p>
+      <ul *ngIf="inputPass.invalid && inputPass.touched" class="text-danger">
+        <li *ngIf="inputPass.errors?.['required']">Password is required</li>
+        <li *ngIf="inputPass.errors?.['minlength']">Minimum Password length is 6</li>
+      </ul>
+</div>
+
+      <div class="button">
+        <button type="submit" mat-button class="btn btn-outline-success">Login</button>
+        <button class="btn btn-outline-success" mat-button routerLink="/register">New?</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
